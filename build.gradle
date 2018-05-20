@@ -1,0 +1,67 @@
+apply plugin: 'java'
+
+repositories {
+  jcenter()
+  maven { url "http://files.basex.org/maven" }
+}
+
+dependencies {
+  runtime "org.basex:basex-api:9.0.1"
+  runtime "net.sf.saxon:Saxon-HE:9.8.0-12"
+  runtime "xml-resolver:xml-resolver:1.2"
+  runtime "org.eclipse.jetty:jetty-webapp:9.4.9.v20180320"
+}
+
+defaultTasks  'basexGUI', 'basexStart'
+
+task basexGUI {
+  description "Run BaseX GUI."
+  // dependsOn 'install'
+  doLast {
+    ant.java(
+        fork: true, 
+        spawn: true, 
+        classpath: configurations.runtime.asPath, 
+        classname: "org.basex.BaseXGUI",
+        clonevm: true)
+    /*{
+        arg(value: "file1-to-open.xq")
+        arg(value: "file2-to-open.xq")
+    }*/
+  }
+}
+
+task basexStart {
+    description "Start BaseX HTTP and database server in background."
+    // dependsOn 'install'
+    doLast {
+        ant.java(
+            fork: true,
+            spawn: true,
+            classpath: configurations.runtime.asPath, 
+            className: "org.basex.BaseXHTTP",
+            clonevm: true
+        )
+    }
+}
+
+task basexStop(type: JavaExec) {
+    description "Stop BaseX HTTP and database server."
+    classpath configurations.runtime
+    main = "org.basex.BaseXHTTP"
+    args "stop"
+}
+
+/*
+task install(type: JavaExec) {
+  description "Install XQuery modules"
+  classpath configurations.runtime
+  main = "org.basex.BaseX"
+  systemProperties System.getProperties()
+  args "install.bxs"
+  ignoreExitValue true
+  onlyIf {
+    !file("repo/http-github.com-Schematron-schematron-basex-1.2").exists()
+  }
+}
+*/

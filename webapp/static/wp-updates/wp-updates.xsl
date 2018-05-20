@@ -32,7 +32,14 @@
     <xsl:output indent="true"/>
 
     <xsl:template name="xsl:initial-template" match="/">
-        <xsl:variable name="lines" as="xs:string*" select="tokenize($wpUpdatesPageText, '\r?\n')"/>
+        <xsl:call-template name="process">
+            <xsl:with-param name="text" select="$wpUpdatesPageText"/>
+        </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:template name="process">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:variable name="lines" as="xs:string*" select="tokenize($text, '\r?\n')"/>
         <xsl:variable name="raw">
             <xsl:apply-templates select="$lines" mode="raw"/>
         </xsl:variable>

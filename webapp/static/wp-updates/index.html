@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>WordPress Updates Page to Excel</title>
+    <link rel="stylesheet" href="wp-updates.css" type="text/css"/>
+    <script type="text/javascript" language="javascript" src="../Saxon-JS-1.1.0/SaxonJS.min.js"></script>
+    <script>
+      window.onload = function() {
+        SaxonJS.transform({
+          stylesheetLocation: "wp-updates-js.sef",
+          "initialTemplate":"start"
+          });
+      }     
+    </script>
+    <script>
+      function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      }
+    </script>
+</head>
+
+<body>
+  <div id="content">
+
+<h1 id="title">WordPress Updates Page to Excel</h1>
+
+<p>When running a WordPress site it good practice to periodically apply updates to WordPress and any plugins and themes that are installed. 
+  The Updates page in the WordPress Dashboard makes it easy to apply most updates. 
+  Before clicking the update button it is a good idea to read any release notes or change logs written by the developers because sometimes there are actions that need to be done after an update is installed, or a non-standard method of installing updates.
+  This tool transforms the text of the WordPress Updates page into a CSV file, which can be opened in Excel and used to record notes. How to use this form:
+<ol>
+  <li>Go to a WordPress dashboard and navigate to the Updates page. Select everything on this page, and copy.</li>
+  <li>Paste into this form. Press the Convert button.</li>
+  <li>Open the .csv file in Excel</li>
+</ol>
+</p>
+
+<fom>
+  <textarea id="rawtext"></textarea>
+  <br/>
+  <input type="button" value="Convert" id="convert"/>
+  <a id="sample" href="#">Click for sample</a>
+</fom>
+
+<div id="output"/>
+
+  </div>
+</body>
+</html>

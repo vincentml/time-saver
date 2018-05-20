@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="19.1">
     <meta>
-        <filters directoryPatterns="" filePatterns="wp-updates.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
+        <filters directoryPatterns="" filePatterns="time-saver.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
         <options/>
     </meta>
-    <projectTree name="wp-updates.xpr">
+    <projectTree name="time-saver.xpr">
         <folder path="."/>
     </projectTree>
 </project>

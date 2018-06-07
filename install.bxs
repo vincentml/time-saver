@@ -1,0 +1,2 @@
+REPO INSTALL https://github.com/Schematron/schematron-basex/raw/master/dist/schematron-basex-1.2.xar
+REPO INSTALL https://github.com/eliudmeza/OOXML-Library-XQuery-BaseXdb/raw/master/OOXML-Library-XQuery-BaseXdb.xqm

@@ -6,7 +6,7 @@ repositories {
 }
 
 dependencies {
-  runtime "org.basex:basex-api:9.0.1"
+  runtime "org.basex:basex-api:9.0.2"
   runtime "net.sf.saxon:Saxon-HE:9.8.0-12"
   runtime "xml-resolver:xml-resolver:1.2"
   runtime "org.eclipse.jetty:jetty-webapp:9.4.9.v20180320"
